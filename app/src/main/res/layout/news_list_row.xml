@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="5dp"
+    android:layout_marginRight="5dp"
+    app:cardBackgroundColor="@color/card_bg"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="3dp"
+    app:cardPreventCornerOverlap="false"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:id="@+id/rl_news"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:orientation="vertical">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/news_image"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_centerHorizontal="true"
+            android:scaleType="centerCrop"
+            app:riv_corner_radius_top_left="8dp"
+            app:riv_corner_radius_top_right="8dp" />
+
+            <TextView
+                android:id="@+id/tv_news_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_news_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"/>
+
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -11,7 +11,8 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.rokomari.newsviews.R;
-import com.rokomari.newsviews.home_screen.HomeActivity;
+import com.rokomari.newsviews.login_screen.LoginActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +27,7 @@ public class SplashActivity extends AppCompatActivity implements SplashContract.
     private int slidesNumber;
     private boolean showSkip = true;
     private boolean showDone = true;
+    private int splashType = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +35,7 @@ public class SplashActivity extends AppCompatActivity implements SplashContract.
 
         super.onCreate(savedInstanceState);
 
-        splashPresenter = new SplashPresenter(this);
+        splashPresenter = new SplashPresenter(getApplicationContext(),this);
 
         splashPresenter.checkUserVisit();
 
@@ -108,10 +110,18 @@ public class SplashActivity extends AppCompatActivity implements SplashContract.
 
     public void addSlides() {
 
-        fragments.add(IntroSlide.newInstance(R.layout.intro));
-        fragments.add(IntroSlide.newInstance(R.layout.intro2));
-        fragments.add(IntroSlide.newInstance(R.layout.intro3));
-        fragments.add(IntroSlide.newInstance(R.layout.intro4));
+        if(splashType == 0) {
+            fragments.add(IntroSlide.newInstance(R.layout.firstintro1));
+            fragments.add(IntroSlide.newInstance(R.layout.firstintro2));
+            fragments.add(IntroSlide.newInstance(R.layout.firstintro3));
+        }else if(splashType == 1){
+            fragments.add(IntroSlide.newInstance(R.layout.firstintro1));
+            fragments.add(IntroSlide.newInstance(R.layout.firstintro2));
+            fragments.add(IntroSlide.newInstance(R.layout.firstintro3));
+        }
+
+
+        mPagerAdapter.notifyDataSetChanged();
 
         slidesNumber = fragments.size();
         setIndicator(1);
@@ -125,7 +135,7 @@ public class SplashActivity extends AppCompatActivity implements SplashContract.
 
     @Override
     public void loadNextActivity() {
-        startActivity(new Intent(this, HomeActivity.class));
+        startActivity(new Intent(this, LoginActivity.class));
         finish();
     }
 
@@ -159,7 +169,14 @@ public class SplashActivity extends AppCompatActivity implements SplashContract.
     }
 
     @Override
-    public void shouldShowSplash(boolean splash) {
+    public void shouldShowSplash(int visits) {
 
+        if(visits == 0){
+            splashType = 0;
+        }else if(visits == 1){
+            splashType = 1;
+        }else{
+            loadNextActivity();
+        }
     }
 }

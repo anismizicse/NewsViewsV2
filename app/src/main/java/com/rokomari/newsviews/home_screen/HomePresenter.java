@@ -1,10 +1,28 @@
 package com.rokomari.newsviews.home_screen;
 
-public class HomePresenter {
+import android.content.Context;
+
+import com.rokomari.newsviews.model.NewsDetails;
+
+import java.util.List;
+
+public class HomePresenter implements HomeContract.HPresenter {
 
     private HomeContract.HView hView;
+    private HomeModel homeModel;
 
-    HomePresenter(HomeContract.HView hView){
+    HomePresenter(Context context, HomeContract.HView hView){
         this.hView = hView;
+        homeModel = new HomeModel(context, this);
+    }
+
+    @Override
+    public void loadNewsList() {
+        homeModel.loadArticles();
+    }
+
+    @Override
+    public void onNewsLoaded(List<NewsDetails> newsDetailsList) {
+        hView.onNewsLoaded(newsDetailsList);
     }
 }

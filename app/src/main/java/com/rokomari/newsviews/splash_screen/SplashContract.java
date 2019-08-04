@@ -6,7 +6,7 @@ public interface SplashContract {
         void loadNextActivity();
         void changeSlide();
         void onSlideSelected(int position);
-        void shouldShowSplash(boolean splash);
+        void shouldShowSplash(int visits);
     }
 
     interface Presenter{
@@ -15,6 +15,7 @@ public interface SplashContract {
         void onDoneClicked();
         void onSlideChanged(int position);
         void checkUserVisit();
+        void onVisitsLoaded(int visits);
     }
 
 }

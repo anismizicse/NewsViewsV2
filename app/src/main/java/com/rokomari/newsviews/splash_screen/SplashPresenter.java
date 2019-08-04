@@ -1,13 +1,16 @@
 package com.rokomari.newsviews.splash_screen;
 
+import android.content.Context;
+
+
 public class SplashPresenter implements SplashContract.Presenter {
 
     private SplashContract.SplashView splashView;
     private SplashModel splashModel;
 
-    SplashPresenter(SplashContract.SplashView splashView){
+    public SplashPresenter(Context context, SplashContract.SplashView splashView){
         this.splashView = splashView;
-        splashModel = new SplashModel();
+        splashModel = new SplashModel(context, this);
     }
 
     @Override
@@ -32,6 +35,11 @@ public class SplashPresenter implements SplashContract.Presenter {
 
     @Override
     public void checkUserVisit() {
+        splashModel.checkUserVist();
+    }
 
+    @Override
+    public void onVisitsLoaded(int visits) {
+        splashView.shouldShowSplash(visits);
     }
 }

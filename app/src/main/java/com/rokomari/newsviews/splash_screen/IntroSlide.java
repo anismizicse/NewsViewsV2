@@ -38,7 +38,9 @@ public class IntroSlide extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(layoutResId, container, false);
+        View view = inflater.inflate(layoutResId, container, false);
+
+        return view;
     }
 
 }
