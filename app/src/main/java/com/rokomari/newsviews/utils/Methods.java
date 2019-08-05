@@ -14,8 +14,11 @@ import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
 
 import com.facebook.AccessToken;
+import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.rokomari.newsviews.R;
 
 import java.text.ParseException;
@@ -48,6 +51,14 @@ public class Methods {
 
         return isLoggedIn;
 
+    }
+
+    public static void logout(Context context, GoogleSignInClient googleSignInClient){
+        LoginManager.getInstance().logOut();
+        googleSignInClient.signOut();
+        googleSignInClient.revokeAccess();
+        SharedPrefUtil sharedPrefUtil = new SharedPrefUtil(context);
+        sharedPrefUtil.clear();
     }
 
     public static String formatMessageTime(String dateString, Context context){

@@ -22,6 +22,7 @@ public class Constants {
     public static final String NEWS_LINK = "News_Link";
     public static final String USER_NAME = "user_name";
     public static final String USER_EMAIL = "user_email";
+    public static final String CON_ACTION = "android.net.conn.CONNECTIVITY_CHANGE";
 
     public static OkHttpClient getUnsafeOkHttpClient() {
         try {

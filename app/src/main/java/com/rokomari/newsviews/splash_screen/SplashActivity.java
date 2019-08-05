@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.rokomari.newsviews.R;
+import com.rokomari.newsviews.home_screen.HomeActivity;
 import com.rokomari.newsviews.login_screen.LoginActivity;
 import com.rokomari.newsviews.utils.Constants;
 import com.rokomari.newsviews.utils.SharedPrefUtil;
@@ -143,7 +144,7 @@ public class SplashActivity extends AppCompatActivity implements SplashContract.
         }else if(splashType == 1){
             new SharedPrefUtil(this).saveInt(Constants.USER_VISITS, 2);
         }
-        startActivity(new Intent(this, LoginActivity.class));
+        startActivity(new Intent(this, HomeActivity.class));
         finish();
     }
 

@@ -15,4 +15,5 @@
     <color name="card_bg">#f6f6f6</color>
     <color name="intro1_bg">#00BCD4</color>
     <color name="intro3_bg">#4CAF50</color>
+    <color name="intro2_bg">#5C6BC0</color>
 </resources>

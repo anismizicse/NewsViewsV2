@@ -152,7 +152,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
                             String email = object.getString("email");
                             saveUserData(name, email);
 
-                            sendToHome();
+                            checkSplashStatus();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -196,7 +196,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
 
             if (account != null) {
                 saveUserData(account.getDisplayName(), account.getEmail());
-                sendToHome();
+                checkSplashStatus();
             }
 
         } catch (ApiException e) {

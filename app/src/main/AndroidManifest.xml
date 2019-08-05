@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WelcomeActivity"
+        <activity
+            android:name=".WelcomeActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait">
@@ -23,6 +24,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider android:name=".utils.SearchSuggestions"
+            android:authorities="com.rokomari.newsviews.utils.SearchSuggestions" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -46,6 +50,7 @@
         </activity>
         <activity
             android:name=".search_screen.SearchActivity"
+            android:parentActivityName=".home_screen.HomeActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait">
@@ -76,7 +81,7 @@
         <activity
             android:name=".splash_screen.SplashActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
