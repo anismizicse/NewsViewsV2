@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.rokomari.newsviews.R;
 import com.rokomari.newsviews.login_screen.LoginActivity;
+import com.rokomari.newsviews.utils.Constants;
+import com.rokomari.newsviews.utils.SharedPrefUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -115,9 +117,9 @@ public class SplashActivity extends AppCompatActivity implements SplashContract.
             fragments.add(IntroSlide.newInstance(R.layout.firstintro2));
             fragments.add(IntroSlide.newInstance(R.layout.firstintro3));
         }else if(splashType == 1){
-            fragments.add(IntroSlide.newInstance(R.layout.firstintro1));
-            fragments.add(IntroSlide.newInstance(R.layout.firstintro2));
-            fragments.add(IntroSlide.newInstance(R.layout.firstintro3));
+            fragments.add(IntroSlide.newInstance(R.layout.secondintro1));
+            fragments.add(IntroSlide.newInstance(R.layout.secondintro2));
+            fragments.add(IntroSlide.newInstance(R.layout.secondintro3));
         }
 
 
@@ -135,6 +137,12 @@ public class SplashActivity extends AppCompatActivity implements SplashContract.
 
     @Override
     public void loadNextActivity() {
+
+        if(splashType == 0){
+            new SharedPrefUtil(this).saveInt(Constants.USER_VISITS, 1);
+        }else if(splashType == 1){
+            new SharedPrefUtil(this).saveInt(Constants.USER_VISITS, 2);
+        }
         startActivity(new Intent(this, LoginActivity.class));
         finish();
     }

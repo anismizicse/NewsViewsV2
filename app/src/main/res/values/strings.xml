@@ -11,5 +11,15 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="search_numer">Search Number</string>
+    <string name="facebook_app_id">206203633476808</string>
+    <string name="fb_login_protocol_scheme">fb526775771084178</string>
+    <string name="no_internet">No Internet!</string>
+    <string name="please_connect">Please Connect to Internet to Continue.</string>
+    <string name="retry">Retry</string>
+    <string name="about_me">I am a Software Engineer at DreamIT, have developed more than 30 software. Other areas that best suit my skills are SEO, Online Marketing, and Team Leading. I am knlowledgeable in Java, Kotlin, C, C++, Android, Java Swing, PHP, JQuery, MySql, HTML, and CSS. I have worked more than 8500 hours on different areas at Upwork.</string>
+    <string name="load_in_browser">Load in Mobile Browser?</string>
+    <string name="load_news_msg">Do you want to load the news in a webview</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 
 </resources>

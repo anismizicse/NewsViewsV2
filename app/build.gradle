@@ -40,4 +40,7 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
 
     implementation 'com.makeramen:roundedimageview:2.3.0'
+
+    implementation 'com.facebook.android:facebook-login:4.34.0'
+    implementation 'com.google.android.gms:play-services-auth:17.0.0'
 }

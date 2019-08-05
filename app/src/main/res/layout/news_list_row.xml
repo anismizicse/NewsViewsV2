@@ -27,22 +27,35 @@
             app:riv_corner_radius_top_left="8dp"
             app:riv_corner_radius_top_right="8dp" />
 
-            <TextView
-                android:id="@+id/tv_news_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
+        <TextView
+            android:id="@+id/tv_news_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Title"
+            android:fontFamily="sans-serif-light"
+            android:maxLines="1"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="13sp" />
+        <TextView
+            android:id="@+id/tv_news_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="date"
+            android:textSize="11sp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"/>
 
-            <TextView
-                android:id="@+id/tv_news_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="10sp"/>
-
+        <TextView
+            android:layout_weight="1"
+            android:id="@+id/tv_news_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="author"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="11sp" />
 
 
     </LinearLayout>

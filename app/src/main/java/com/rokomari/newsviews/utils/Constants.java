@@ -20,6 +20,8 @@ public class Constants {
     public static final String NUMBER_BASE_URL = "http://numbersapi.com/";
     public static final String USER_VISITS = "User_Visits";
     public static final String NEWS_LINK = "News_Link";
+    public static final String USER_NAME = "user_name";
+    public static final String USER_EMAIL = "user_email";
 
     public static OkHttpClient getUnsafeOkHttpClient() {
         try {
