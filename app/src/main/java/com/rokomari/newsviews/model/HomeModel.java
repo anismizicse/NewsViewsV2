@@ -1,10 +1,11 @@
-package com.rokomari.newsviews.home_screen;
+package com.rokomari.newsviews.model;
 
 import android.content.Context;
 import android.util.Log;
 
-import com.rokomari.newsviews.model.NewsDetails;
-import com.rokomari.newsviews.model.NewsList;
+import com.rokomari.newsviews.utils.HomeContract;
+import com.rokomari.newsviews.utils.NewsDetails;
+import com.rokomari.newsviews.utils.NewsList;
 import com.rokomari.newsviews.utils.AppSingleTon;
 import com.rokomari.newsviews.utils.Constants;
 import com.rokomari.newsviews.utils.NewsAPI;
@@ -20,12 +21,12 @@ public class HomeModel {
     Context context;
     HomeContract.HPresenter hPresenter;
 
-    HomeModel(Context context, HomeContract.HPresenter hPresenter){
+    public HomeModel(Context context, HomeContract.HPresenter hPresenter){
         this.context = context;
         this.hPresenter = hPresenter;
     }
 
-    void loadArticles(){
+    public void loadArticles(){
 
         NewsAPI newsAPI = AppSingleTon.getmInstance(context, Constants.NEWS_BASE_URL)
                                 .create(NewsAPI.class);

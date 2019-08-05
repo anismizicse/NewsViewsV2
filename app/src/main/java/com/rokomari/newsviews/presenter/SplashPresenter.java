@@ -1,6 +1,9 @@
-package com.rokomari.newsviews.splash_screen;
+package com.rokomari.newsviews.presenter;
 
 import android.content.Context;
+
+import com.rokomari.newsviews.model.SplashModel;
+import com.rokomari.newsviews.utils.SplashContract;
 
 
 public class SplashPresenter implements SplashContract.Presenter {

@@ -1,11 +1,10 @@
-package com.rokomari.newsviews.search_screen;
+package com.rokomari.newsviews.model;
 
 import android.content.Context;
-import android.util.Log;
-
 import com.rokomari.newsviews.utils.AppSingleTon;
 import com.rokomari.newsviews.utils.Constants;
 import com.rokomari.newsviews.utils.NumbersAPI;
+import com.rokomari.newsviews.utils.SearchContract;
 
 import java.io.IOException;
 import okhttp3.ResponseBody;
@@ -14,16 +13,15 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SearchModel {
-    private static final String TAG = "SearchModel";
     Context context;
     SearchContract.SPresenter sPresenter;
 
-    SearchModel(Context context, SearchContract.SPresenter sPresenter){
+    public SearchModel(Context context, SearchContract.SPresenter sPresenter){
         this.context = context;
         this.sPresenter = sPresenter;
     }
 
-    void fetchNumberDetails(String number){
+    public void fetchNumberDetails(String number){
         NumbersAPI numbersAPI = AppSingleTon
                 .getmInstance(context, Constants.NUMBER_BASE_URL)
                 .create(NumbersAPI.class);
@@ -35,13 +33,12 @@ public class SearchModel {
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
 
                 if(!response.isSuccessful()){
-                    Log.d(TAG, "onResponse: "+ response.code());
+
                     return;
                 }
 
-                Log.d(TAG, "onResponse: "+ response);
                 try {
-                    sPresenter.onNumberLoaded(response.body().string());
+                    sPresenter.onNumAPILoaded(response.body().string());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -50,7 +47,7 @@ public class SearchModel {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Log.d(TAG, "onFailure: "+t.getMessage());
+
             }
         });
         

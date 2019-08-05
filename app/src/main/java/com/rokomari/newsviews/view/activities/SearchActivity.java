@@ -1,8 +1,7 @@
-package com.rokomari.newsviews.search_screen;
+package com.rokomari.newsviews.view.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,9 +9,9 @@ import android.provider.SearchRecentSuggestions;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.rokomari.newsviews.R;
+import com.rokomari.newsviews.utils.SearchContract;
+import com.rokomari.newsviews.presenter.SearchPresenter;
 import com.rokomari.newsviews.utils.SearchSuggestions;
 
 public class SearchActivity extends AppCompatActivity implements SearchContract.SearchView {
@@ -61,18 +60,14 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
             //use the query to search your data somehow
-            sPresenter.loadNumbers(query);
+            sPresenter.loadNumAPI(query);
         }
     }
 
     @Override
-    public void onNumbersLoaded(String details) {
+    public void onNumAPILoaded(String details) {
         searchProgress.setVisibility(View.GONE);
         searchResult.setText(details);
     }
 
-    @Override
-    public void onDatesLoaded(String details) {
-        Toast.makeText(this, details, Toast.LENGTH_LONG).show();
-    }
 }

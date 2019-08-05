@@ -1,4 +1,4 @@
-package com.rokomari.newsviews.model;
+package com.rokomari.newsviews.utils;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

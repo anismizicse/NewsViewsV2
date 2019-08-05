@@ -1,6 +1,4 @@
-package com.rokomari.newsviews.home_screen;
-
-import com.rokomari.newsviews.model.NewsDetails;
+package com.rokomari.newsviews.utils;
 
 import java.util.List;
 
@@ -13,5 +11,9 @@ public interface HomeContract {
     interface HPresenter{
         void loadNewsList();
         void onNewsLoaded(List<NewsDetails> newsList);
+    }
+
+    interface SwitchList{
+
     }
 }

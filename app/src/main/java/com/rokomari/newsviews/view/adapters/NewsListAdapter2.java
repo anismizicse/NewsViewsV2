@@ -1,4 +1,4 @@
-package com.rokomari.newsviews.home_screen;
+package com.rokomari.newsviews.view.adapters;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -14,21 +14,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.rokomari.newsviews.NewsDetailsActivity;
 import com.rokomari.newsviews.R;
-import com.rokomari.newsviews.model.NewsDetails;
 import com.rokomari.newsviews.utils.AppSingleTon;
 import com.rokomari.newsviews.utils.Constants;
 import com.rokomari.newsviews.utils.Methods;
+import com.rokomari.newsviews.utils.NewsDetails;
+import com.rokomari.newsviews.view.activities.NewsDetailsActivity;
 
 import java.util.List;
 
-public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsListViewHolder> {
+public class NewsListAdapter2 extends RecyclerView.Adapter<NewsListAdapter2.NewsListViewHolder> {
 
     private Context context;
     private List<NewsDetails> newsList;
 
-    NewsListAdapter(Context context, List<NewsDetails> newsList){
+    public NewsListAdapter2(Context context, List<NewsDetails> newsList){
         this.context = context;
         this.newsList = newsList;
     }
@@ -36,7 +36,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsLi
     @NonNull
     @Override
     public NewsListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.news_list_row, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.news_list_row2, parent, false);
         return new NewsListViewHolder(view);
     }
 
@@ -46,6 +46,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsLi
         NewsDetails newsDetails = newsList.get(position);
         AppSingleTon.getRequestManager(context.getApplicationContext()).load(newsDetails.getUrlToImage()).into(holder.news_image);
         holder.tv_news_title.setText(newsDetails.getTitle());
+        holder.tv_news_description.setText(newsDetails.getDescription());
         String publishedAt = "Published: " + Methods.formatMessageTime(newsDetails.getPublishedAt(), context);
         holder.tv_news_date.setText(publishedAt);
         String author = "Author: " + newsDetails.getAuthor();
@@ -60,7 +61,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsLi
     public class NewsListViewHolder extends RecyclerView.ViewHolder{
 
         ImageView news_image;
-        TextView tv_news_date, tv_news_title, tv_news_author;
+        TextView tv_news_date, tv_news_title, tv_news_description, tv_news_author;
 
         public NewsListViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -69,6 +70,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsLi
             tv_news_title = itemView.findViewById(R.id.tv_news_title);
             tv_news_date = itemView.findViewById(R.id.tv_news_date);
             tv_news_author = itemView.findViewById(R.id.tv_news_author);
+            tv_news_description = itemView.findViewById(R.id.tv_news_description);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

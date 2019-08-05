@@ -1,20 +1,13 @@
-package com.rokomari.newsviews;
+package com.rokomari.newsviews.view.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.widget.ImageView;
-
-import com.facebook.login.Login;
-import com.rokomari.newsviews.home_screen.HomeActivity;
-import com.rokomari.newsviews.login_screen.LoginActivity;
-import com.rokomari.newsviews.splash_screen.SplashActivity;
+import com.rokomari.newsviews.R;
 import com.rokomari.newsviews.utils.Constants;
 import com.rokomari.newsviews.utils.Methods;
 import com.rokomari.newsviews.utils.SharedPrefUtil;
@@ -22,7 +15,6 @@ import com.rokomari.newsviews.utils.SharedPrefUtil;
 public class WelcomeActivity extends AppCompatActivity {
 
     ImageView welcome_logo;
-    private static final String TAG = "WelcomeActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,11 +64,10 @@ public class WelcomeActivity extends AppCompatActivity {
         int userVisits = new SharedPrefUtil(this).getInt(Constants.USER_VISITS, 0);
         boolean isLogged = Methods.checkLogin(this);
 
-        Log.d(TAG, "checkSetup: "+userVisits+ " "+isLogged);
 
-        if(isLogged && userVisits != 2){
+        if(isLogged && userVisits < 2){
             startActivity(new Intent(this, SplashActivity.class));
-        }else if(!isLogged && userVisits == 0){
+        }else if(!isLogged){
             startActivity(new Intent(this, LoginActivity.class));
         }else{
             startActivity(new Intent(this, HomeActivity.class));

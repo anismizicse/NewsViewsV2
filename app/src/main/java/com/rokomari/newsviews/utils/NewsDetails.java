@@ -1,4 +1,4 @@
-package com.rokomari.newsviews.model;
+package com.rokomari.newsviews.utils;
 
 public class NewsDetails {
     public String getAuthor() {

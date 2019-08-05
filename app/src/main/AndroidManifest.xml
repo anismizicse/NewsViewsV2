@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".WelcomeActivity"
+            android:name=".view.activities.WelcomeActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait">
@@ -49,8 +49,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".search_screen.SearchActivity"
-            android:parentActivityName=".home_screen.HomeActivity"
+            android:name=".view.activities.SearchActivity"
+            android:parentActivityName=".view.activities.HomeActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait">
@@ -63,23 +63,23 @@
                 android:resource="@xml/searchable" />
         </activity>
         <activity
-            android:name=".NewsDetailsActivity"
+            android:name=".view.activities.NewsDetailsActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".login_screen.LoginActivity"
+            android:name=".view.activities.LoginActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".home_screen.HomeActivity"
+            android:name=".view.activities.HomeActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.app.default_searchable"
-                android:value=".search_screen.SearchActivity" />
+                android:value=".view.activities.SearchActivity" />
         </activity>
         <activity
-            android:name=".splash_screen.SplashActivity"
+            android:name=".view.activities.SplashActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait" />
     </application>

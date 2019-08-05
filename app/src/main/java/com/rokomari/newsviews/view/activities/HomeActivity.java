@@ -1,4 +1,4 @@
-package com.rokomari.newsviews.home_screen;
+package com.rokomari.newsviews.view.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -28,7 +28,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.navigation.NavigationView;
 import com.rokomari.newsviews.R;
-import com.rokomari.newsviews.login_screen.LoginActivity;
+import com.rokomari.newsviews.view.fragments.AboutFragment;
+import com.rokomari.newsviews.view.fragments.HomeFragment;
 import com.rokomari.newsviews.utils.Methods;
 
 
@@ -121,7 +122,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         switch (item.getItemId()) {
             case R.id.logout:
-                Methods.logout(this,mGoogleSignInClient);
+                Methods.logout(mGoogleSignInClient);
                 startActivity(new Intent(this, LoginActivity.class));
                 finish();
                 return true;

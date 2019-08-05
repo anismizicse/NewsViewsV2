@@ -1,4 +1,4 @@
-package com.rokomari.newsviews.splash_screen;
+package com.rokomari.newsviews.utils;
 
 public interface SplashContract {
 

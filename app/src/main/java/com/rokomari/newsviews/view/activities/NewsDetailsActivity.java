@@ -1,4 +1,4 @@
-package com.rokomari.newsviews;
+package com.rokomari.newsviews.view.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.ProgressBar;
 
+import com.rokomari.newsviews.R;
 import com.rokomari.newsviews.utils.Constants;
 
 public class NewsDetailsActivity extends AppCompatActivity {

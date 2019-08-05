@@ -8,7 +8,6 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
-
 import okhttp3.OkHttpClient;
 
 public class Constants {
@@ -19,6 +18,7 @@ public class Constants {
     public static final String NEWS_BASE_URL = "https://newsapi.org/v2/";
     public static final String NUMBER_BASE_URL = "http://numbersapi.com/";
     public static final String USER_VISITS = "User_Visits";
+
     public static final String NEWS_LINK = "News_Link";
     public static final String USER_NAME = "user_name";
     public static final String USER_EMAIL = "user_email";

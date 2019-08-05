@@ -1,4 +1,4 @@
-package com.rokomari.newsviews.login_screen;
+package com.rokomari.newsviews.view.activities;
 
 
 import android.content.Intent;
@@ -26,8 +26,6 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.rokomari.newsviews.R;
-import com.rokomari.newsviews.home_screen.HomeActivity;
-import com.rokomari.newsviews.splash_screen.SplashActivity;
 import com.rokomari.newsviews.utils.AppSingleTon;
 import com.rokomari.newsviews.utils.Constants;
 import com.rokomari.newsviews.utils.Methods;
@@ -39,7 +37,7 @@ import org.json.JSONObject;
 import java.util.Arrays;
 
 
-public class LoginActivity extends AppCompatActivity implements LoginContract.LoginView {
+public class LoginActivity extends AppCompatActivity{
 
     private static final String TAG = "LoginActivity";
     private static final String EMAIL = "email";

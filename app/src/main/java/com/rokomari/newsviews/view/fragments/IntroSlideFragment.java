@@ -1,4 +1,4 @@
-package com.rokomari.newsviews.splash_screen;
+package com.rokomari.newsviews.view.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,12 +8,12 @@ import android.view.ViewGroup;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class IntroSlide extends Fragment {
+public class IntroSlideFragment extends Fragment {
 
     private static final String ARG_LAYOUT_RES_ID = "layoutResId";
 
-    public static IntroSlide newInstance(int layoutResId) {
-        IntroSlide introSlide = new IntroSlide();
+    public static IntroSlideFragment newInstance(int layoutResId) {
+        IntroSlideFragment introSlide = new IntroSlideFragment();
 
         Bundle args = new Bundle();
         args.putInt(ARG_LAYOUT_RES_ID, layoutResId);
@@ -24,7 +24,7 @@ public class IntroSlide extends Fragment {
 
     private int layoutResId;
 
-    public IntroSlide() {
+    public IntroSlideFragment() {
     }
 
     @Override

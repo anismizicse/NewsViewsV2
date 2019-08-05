@@ -3,6 +3,7 @@ package com.rokomari.newsviews.utils;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.text.format.DateUtils;
@@ -53,12 +54,10 @@ public class Methods {
 
     }
 
-    public static void logout(Context context, GoogleSignInClient googleSignInClient){
+    public static void logout(GoogleSignInClient googleSignInClient){
         LoginManager.getInstance().logOut();
         googleSignInClient.signOut();
         googleSignInClient.revokeAccess();
-        SharedPrefUtil sharedPrefUtil = new SharedPrefUtil(context);
-        sharedPrefUtil.clear();
     }
 
     public static String formatMessageTime(String dateString, Context context){

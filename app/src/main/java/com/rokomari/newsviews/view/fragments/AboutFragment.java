@@ -1,4 +1,4 @@
-package com.rokomari.newsviews.home_screen;
+package com.rokomari.newsviews.view.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

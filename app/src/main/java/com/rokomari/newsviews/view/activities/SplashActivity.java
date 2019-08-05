@@ -1,4 +1,4 @@
-package com.rokomari.newsviews.splash_screen;
+package com.rokomari.newsviews.view.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -11,10 +11,12 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.rokomari.newsviews.R;
-import com.rokomari.newsviews.home_screen.HomeActivity;
-import com.rokomari.newsviews.login_screen.LoginActivity;
+import com.rokomari.newsviews.utils.SplashContract;
+import com.rokomari.newsviews.presenter.SplashPresenter;
 import com.rokomari.newsviews.utils.Constants;
 import com.rokomari.newsviews.utils.SharedPrefUtil;
+import com.rokomari.newsviews.view.adapters.IntroFragAdapter;
+import com.rokomari.newsviews.view.fragments.IntroSlideFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +26,7 @@ public class SplashActivity extends AppCompatActivity implements SplashContract.
     private SplashPresenter splashPresenter;
     TextView skipButton, doneButton, indicatorContainer;
     ImageView nextButton;
-    private PagerAdapter mPagerAdapter;
+    private IntroFragAdapter mPagerAdapter;
     private ViewPager pager;
     private List<Fragment> fragments = new ArrayList<>();
     private int slidesNumber;
@@ -66,7 +68,7 @@ public class SplashActivity extends AppCompatActivity implements SplashContract.
         nextButton.setOnClickListener(this);
         doneButton.setOnClickListener(this);
 
-        mPagerAdapter = new PagerAdapter(getSupportFragmentManager(), fragments);
+        mPagerAdapter = new IntroFragAdapter(getSupportFragmentManager(), fragments);
 
         pager.setAdapter(this.mPagerAdapter);
 
@@ -114,13 +116,13 @@ public class SplashActivity extends AppCompatActivity implements SplashContract.
     public void addSlides() {
 
         if(splashType == 0) {
-            fragments.add(IntroSlide.newInstance(R.layout.firstintro1));
-            fragments.add(IntroSlide.newInstance(R.layout.firstintro2));
-            fragments.add(IntroSlide.newInstance(R.layout.firstintro3));
+            fragments.add(IntroSlideFragment.newInstance(R.layout.firstintro1));
+            fragments.add(IntroSlideFragment.newInstance(R.layout.firstintro2));
+            fragments.add(IntroSlideFragment.newInstance(R.layout.firstintro3));
         }else if(splashType == 1){
-            fragments.add(IntroSlide.newInstance(R.layout.secondintro1));
-            fragments.add(IntroSlide.newInstance(R.layout.secondintro2));
-            fragments.add(IntroSlide.newInstance(R.layout.secondintro3));
+            fragments.add(IntroSlideFragment.newInstance(R.layout.secondintro1));
+            fragments.add(IntroSlideFragment.newInstance(R.layout.secondintro2));
+            fragments.add(IntroSlideFragment.newInstance(R.layout.secondintro3));
         }
 
 

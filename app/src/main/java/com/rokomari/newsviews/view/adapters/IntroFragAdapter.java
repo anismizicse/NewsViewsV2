@@ -1,4 +1,4 @@
-package com.rokomari.newsviews.splash_screen;
+package com.rokomari.newsviews.view.adapters;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -6,10 +6,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import java.util.List;
 
-public class PagerAdapter extends FragmentPagerAdapter {
+public class IntroFragAdapter extends FragmentPagerAdapter {
     private List<Fragment> fragments;
 
-    public PagerAdapter(FragmentManager fm, @NonNull List<Fragment> fragments) {
+    public IntroFragAdapter(FragmentManager fm, @NonNull List<Fragment> fragments) {
         super(fm);
         this.fragments = fragments;
     }

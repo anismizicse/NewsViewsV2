@@ -1,4 +1,4 @@
-package com.rokomari.newsviews.home_screen;
+package com.rokomari.newsviews.view.fragments;
 
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
@@ -18,14 +18,21 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.rokomari.newsviews.R;
-import com.rokomari.newsviews.model.NewsDetails;
+import com.rokomari.newsviews.utils.HomeContract;
+import com.rokomari.newsviews.presenter.HomePresenter;
+import com.rokomari.newsviews.view.adapters.NewsListAdapter;
+import com.rokomari.newsviews.utils.NewsDetails;
 import com.rokomari.newsviews.utils.Constants;
 import com.rokomari.newsviews.utils.Methods;
+import com.rokomari.newsviews.view.adapters.NewsListAdapter2;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment implements HomeContract.HView {
@@ -33,8 +40,12 @@ public class HomeFragment extends Fragment implements HomeContract.HView {
     private HomeContract.HPresenter homePresenter;
     private RecyclerView rv_home;
     private NewsListAdapter newsListAdapter;
+    private NewsListAdapter2 newsListAdapter2;
     private SwipeRefreshLayout pullToRefresh;
     private ProgressBar newsLoadProgress;
+    private FloatingActionButton swap_news_list;
+    private List<NewsDetails> newsList;
+    private boolean listCard = true;
 
     @Nullable
     @Override
@@ -44,11 +55,9 @@ public class HomeFragment extends Fragment implements HomeContract.HView {
 
         pullToRefresh = view.findViewById(R.id.pullToRefresh);
         newsLoadProgress = view.findViewById(R.id.newsLoadProgress);
+        swap_news_list = view.findViewById(R.id.swap_news_list);
 
         rv_home = view.findViewById(R.id.rv_home);
-        int spancount = 2;
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), spancount);
-        rv_home.setLayoutManager(gridLayoutManager);
         rv_home.setItemAnimator(new DefaultItemAnimator());
         rv_home.setHasFixedSize(true);
 
@@ -67,14 +76,49 @@ public class HomeFragment extends Fragment implements HomeContract.HView {
         IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
         getActivity().registerReceiver(networkReceiver, intentFilter);
 
+        swap_news_list.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(newsList != null && listCard){
+                    listCard = false;
+                    setListAdapter(listCard);
+                }else if(newsList != null){
+                    listCard = true;
+                    setListAdapter(listCard);
+                }
+
+            }
+        });
+
         return view;
     }
 
     @Override
     public void onNewsLoaded(List<NewsDetails> newsList) {
         newsLoadProgress.setVisibility(View.GONE);
-        newsListAdapter = new NewsListAdapter(getActivity(), newsList);
-        rv_home.setAdapter(newsListAdapter);
+        this.newsList = newsList;
+        setListAdapter(listCard);
+    }
+
+    private void setListAdapter(boolean listCard) {
+
+        newsListAdapter = null;
+        rv_home.setLayoutManager(null);
+        rv_home.setAdapter(null);
+
+        if(listCard) {
+            int spancount = 2;
+            GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), spancount);
+            rv_home.setLayoutManager(gridLayoutManager);
+            newsListAdapter = new NewsListAdapter(getActivity(), newsList);
+            rv_home.setAdapter(newsListAdapter);
+
+        }else{
+            rv_home.setLayoutManager(new LinearLayoutManager(getActivity()));
+            newsListAdapter2 = new NewsListAdapter2(getActivity(), newsList);
+            rv_home.setAdapter(newsListAdapter2);
+        }
         pullToRefresh.setRefreshing(false);
     }
 
